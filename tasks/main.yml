@@ -13,6 +13,7 @@
   #In theory, a better approach is to do a DNS lookup and see if I know how to control that nameserver.
   when: bare_url is search("megaphonetech.com")
   changed_when: "dnshelper_result.stdout != 'DNS already exists and is correct.'"
+  become: no
 
 - name: Update MFPL DNS - AAAA record
   local_action: command php "{{ inventory_dir }}/helpers/mfplapi.php" "AAAA" "{{ inventory_hostname }}" "{{ ipv6 }}"
