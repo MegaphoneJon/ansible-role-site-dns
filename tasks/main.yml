@@ -17,7 +17,7 @@
 
 - name: Update MFPL DNS - AAAA record
   local_action: command php "{{ inventory_dir }}/helpers/mfplapi.php" "AAAA" "{{ inventory_hostname }}" "{{ ipv6 }}"
-  register: dnshelper_result
+  register: dnshelper_result2
   when: bare_url is search("megaphonetech.com") and ipv6 != ''
-  changed_when: "dnshelper_result.stdout != 'DNS already exists and is correct.'"
+  changed_when: "dnshelper_result2.stdout != 'DNS already exists and is correct.'"
   become: no
